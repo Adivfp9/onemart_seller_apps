@@ -10,7 +10,7 @@ import 'package:sixvalley_vendor_app/view/base/custom_search_field.dart';
 import 'package:sixvalley_vendor_app/view/screens/delivery/widget/delivery_man_list_view.dart';
 
 class DeliveryManListScreen extends StatefulWidget {
-  const DeliveryManListScreen({Key? key}) : super(key: key);
+  const DeliveryManListScreen({super.key});
 
   @override
   State<DeliveryManListScreen> createState() => _DeliveryManListScreenState();
@@ -55,9 +55,9 @@ class _DeliveryManListScreenState extends State<DeliveryManListScreen> {
                         isFilter: false,
                       ),
                     ))),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: Column(
-                children: const [DeliveryManListView(), SizedBox(height: Dimensions.paddingSizeSmall)],
+                children: [DeliveryManListView(), SizedBox(height: Dimensions.paddingSizeSmall)],
               ),
             )
           ],

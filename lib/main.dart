@@ -54,6 +54,14 @@ Future<void> main() async {
     orderID = (theNotificationResponse!.payload != null && theNotificationResponse.payload!.isNotEmpty)
         ? int.parse(theNotificationResponse.payload!) : null;
   }
+
+  /* 
+  * OLD CODE
+  int? orderID;
+  if (notificationAppLaunchDetails.didNotificationLaunchApp ?? false) {
+    orderID = (notificationAppLaunchDetails.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)
+        ? int.parse(notificationAppLaunchDetails.payload!) : null;
+  } */
   await Permission.notification.isDenied.then((value) {
     if (value) {
       Permission.notification.request();
@@ -113,6 +121,8 @@ class MyApp extends StatelessWidget {
       locale: Provider.of<LocalizationProvider>(context).locale,
       builder:(context,child){
         return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)), child: child!);
+        // * THE OLD CODE
+        // return MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1), child: child!);
       },
       localizationsDelegates: const [
         AppLocalization.delegate,

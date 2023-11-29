@@ -26,7 +26,7 @@ class AddProductScreen extends StatefulWidget {
   final AddProductModel? addProduct;
   final EditProduct? editProduct;
   final bool fromHome;
-  const AddProductScreen({Key? key, this.product, this.addProduct, this.editProduct, this.fromHome = false}) : super(key: key);
+  const AddProductScreen({super.key, this.product, this.addProduct, this.editProduct, this.fromHome = false});
   @override
   AddProductScreenState createState() => AddProductScreenState();
 }
@@ -383,10 +383,10 @@ class AddProductScreenState extends State<AddProductScreen> with TickerProviderS
                     ),
                   ),
                 )
-              : Row(
+              : const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [SizedBox(width: 40, height: 40, child: CircularProgressIndicator())]);
+                  children: [SizedBox(width: 40, height: 40, child: CircularProgressIndicator())]);
         }),
       ),
     );

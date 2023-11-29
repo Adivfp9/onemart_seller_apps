@@ -37,7 +37,7 @@ class MyNotification {
           }
         }
       },
-      // * CODE YANG SAYA GANTI YANG FIX JADI DIATAS
+      // * CODE YANG SAYA GANTI YANG FIX JADI DIATAS - PENYESUAIAN DENGAN KODE YANG BEREBEDA VERSI
       /* onSelectNotification: (String? payload) async {
         try {
           if (payload != null && payload.isNotEmpty) {

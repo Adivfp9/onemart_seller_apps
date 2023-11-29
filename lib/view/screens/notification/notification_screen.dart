@@ -17,7 +17,7 @@ import 'package:sixvalley_vendor_app/view/screens/notification/model/notificatio
 import 'package:url_launcher/url_launcher.dart';
 
 class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({Key? key}) : super(key: key);
+  const NotificationScreen({super.key});
 
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
@@ -61,7 +61,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
 class NotificationCard extends StatelessWidget {
   final NotificationItem notificationItem;
-  const NotificationCard({Key? key, required this.notificationItem}) : super(key: key);
+  const NotificationCard({super.key, required this.notificationItem});
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class NotificationCard extends StatelessWidget {
 class NotificationDialog extends StatelessWidget {
   final String title;
   final String subTitle;
-  const NotificationDialog({Key? key, required this.title, required this.subTitle}) : super(key: key);
+  const NotificationDialog({super.key, required this.title, required this.subTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +108,9 @@ class NotificationDialog extends StatelessWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min, children: [
 
-            InkWell(onTap: ()=> Navigator.of(context).pop(), child:  Padding(
-                padding: const EdgeInsets.only(top : Dimensions.paddingSizeDefault),
-                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
+            InkWell(onTap: ()=> Navigator.of(context).pop(), child:  const Padding(
+                padding: EdgeInsets.only(top : Dimensions.paddingSizeDefault),
+                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     Icon(CupertinoIcons.clear, ),
                   ],
                 ),
