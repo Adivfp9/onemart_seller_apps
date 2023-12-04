@@ -39,7 +39,9 @@ import 'package:sixvalley_vendor_app/view/screens/splash/splash_screen.dart';
 
 import 'di_container.dart' as di;
 import 'notification/my_notification.dart';
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
@@ -47,12 +49,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await di.init();
-  final NotificationAppLaunchDetails? notificationAppLaunchDetails = await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-  NotificationResponse? theNotificationResponse = notificationAppLaunchDetails!.notificationResponse;
+  final NotificationAppLaunchDetails? notificationAppLaunchDetails =
+      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  NotificationResponse? theNotificationResponse =
+      notificationAppLaunchDetails!.notificationResponse;
   int? orderID;
-  if (notificationAppLaunchDetails.didNotificationLaunchApp ?? false) {
-    orderID = (theNotificationResponse!.payload != null && theNotificationResponse.payload!.isNotEmpty)
-        ? int.parse(theNotificationResponse.payload!) : null;
+  if (notificationAppLaunchDetails.didNotificationLaunchApp) {
+    orderID = (theNotificationResponse!.payload != null &&
+            theNotificationResponse.payload!.isNotEmpty)
+        ? int.parse(theNotificationResponse.payload!)
+        : null;
   }
 
   /* 
@@ -76,7 +82,8 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<ThemeProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<SplashProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<LanguageProvider>()),
-      ChangeNotifierProvider(create: (context) => di.sl<LocalizationProvider>()),
+      ChangeNotifierProvider(
+          create: (context) => di.sl<LocalizationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<AuthProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<ProfileProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<ShopProvider>()),
@@ -87,13 +94,16 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<TransactionProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<SellerProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<ProductProvider>()),
-      ChangeNotifierProvider(create: (context) => di.sl<ProductReviewProvider>()),
+      ChangeNotifierProvider(
+          create: (context) => di.sl<ProductReviewProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<ShippingProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<DeliveryManProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<RefundProvider>()),
-      ChangeNotifierProvider(create: (context) => di.sl<BottomMenuController>()),
+      ChangeNotifierProvider(
+          create: (context) => di.sl<BottomMenuController>()),
       ChangeNotifierProvider(create: (context) => di.sl<CartProvider>()),
-      ChangeNotifierProvider(create: (context) => di.sl<EmergencyContactProvider>()),
+      ChangeNotifierProvider(
+          create: (context) => di.sl<EmergencyContactProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<CouponProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<LocationProvider>()),
     ],
@@ -103,7 +113,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   final int? orderId;
-
 
   const MyApp({super.key, this.orderId});
 
@@ -119,8 +128,11 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
       locale: Provider.of<LocalizationProvider>(context).locale,
-      builder:(context,child){
-        return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)), child: child!);
+      builder: (context, child) {
+        return MediaQuery(
+            data: MediaQuery.of(context)
+                .copyWith(textScaler: const TextScaler.linear(1)),
+            child: child!);
         // * THE OLD CODE
         // return MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1), child: child!);
       },
@@ -135,13 +147,17 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class Get {
   static BuildContext? get context => navigatorKey.currentContext;
   static NavigatorState? get navigator => navigatorKey.currentState;
 }
+
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

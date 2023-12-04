@@ -5,7 +5,7 @@ class AppConstants {
   static const String appName = 'One Mart Seller App';
   static const String appVersion = '14.1';
   static const String companyName = 'One Mart';
-  static const String baseUrl = 'https://onemart.online/';
+  static const String baseUrl = 'https://onemart.online';
   static const String loginUri = '/api/v3/seller/auth/login';
   static const String configUri = '/api/v1/config';
   static const String sellerUri = '/api/v3/seller/seller-info';

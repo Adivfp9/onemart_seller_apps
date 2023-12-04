@@ -11,11 +11,9 @@ import 'package:sixvalley_vendor_app/view/base/custom_app_bar.dart';
 import 'package:sixvalley_vendor_app/view/base/no_data_screen.dart';
 import 'package:sixvalley_vendor_app/view/screens/addProduct/add_product_screen.dart';
 
-import '../../../../utill/images.dart';
-
 class ChangeLogWidget extends StatelessWidget {
   final String paidBy;
-  const ChangeLogWidget({Key? key, required this.paidBy}) : super(key: key);
+  const ChangeLogWidget({super.key, required this.paidBy});
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +91,7 @@ class ItemWidget extends StatelessWidget {
   final String? lestValue;
   final String? rightValue;
   final bool isPayment;
-  const ItemWidget({Key? key, required this.lestValue, required this.rightValue,  this.isPayment = false}) : super(key: key);
+  const ItemWidget({super.key, required this.lestValue, required this.rightValue,  this.isPayment = false});
 
   @override
   Widget build(BuildContext context) {
